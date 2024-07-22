@@ -10,5 +10,5 @@
         </div>
     </div>
 
-    <a href="/posts" class="">Back to Posts</a>
+    <a href="/" class="">Back to Posts</a>
 @endsection

@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\LoginController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use PhpParser\Node\Stmt\Catch_;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +22,16 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "title" => "Home",
+Route::get('/', [PostController::class, 'index']);
+
+Route::get('/profile', function () {
+    return view('profile', [
+        "title" => "Profile",
     ]);
-});
-
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        "name" => "Luthfi Novra",
-        "email" => "luthfinovra@gmail.com",
-        "image" => "luthfinovra.jpg"
-    ]);
-});
+})->middleware('auth');
 
 
-Route::get('/posts', [PostController::class, 'index']);
+Route::resource('/posts', DashboardPostController::class)->middleware('auth');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
@@ -60,3 +57,10 @@ Route::get('/users/{user:username}', function (User $user) {
         'posts' => $user->posts,
     ]);
 });
+
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'logout']);

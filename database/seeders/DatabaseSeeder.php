@@ -43,6 +43,6 @@ class DatabaseSeeder extends Seeder
             'slug' => 'web-development'
         ]);
 
-        Post::factory(6)->create();
+        Post::factory(20)->create();
     }
 }
