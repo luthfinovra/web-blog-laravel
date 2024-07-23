@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'programming'
         ]);
         Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
+            'name' => 'Hobby',
+            'slug' => 'hobby'
         ]);
         Category::create([
             'name' => 'Machine Learning',
@@ -41,6 +41,10 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name' => 'Web Development',
             'slug' => 'web-development'
+        ]);
+        Category::create([
+            'name' => 'Gaming',
+            'slug' => 'gaming'
         ]);
 
         Post::factory(20)->create();

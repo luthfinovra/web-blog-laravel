@@ -1,4 +1,4 @@
-@extends('auth/main')
+@extends('auth/layouts/main')
 
 @section('container')   
 @if (session()->has('error'))

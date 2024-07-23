@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Models\Post;
@@ -31,7 +32,6 @@ Route::get('/profile', function () {
 })->middleware('auth');
 
 
-Route::resource('/posts', DashboardPostController::class)->middleware('auth');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
@@ -41,7 +41,6 @@ Route::get('/categories', function (Category $category) {
         'categories' => Category::all(),
     ]);
 });
-
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('category', [
         'title' => $category->name,
@@ -64,3 +63,8 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/login', [LoginController::class, 'store']);
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
+Route::resource('/dashboard/posts', DashboardPostController::class);
+
+Route::resource('/dashboard/categories', AdminController::class)->except('show')->middleware('admin');

@@ -4,7 +4,7 @@
         <div class="hidden md:flex space-x-4">
             <a href="/" class="{{ Request::is('/') ? 'text-white' : 'text-gray-300 hover:text-white' }}">Home</a>
             @auth
-            <a href="/posts" class="{{ Request::is('posts') ? 'text-white' : 'text-gray-300 hover:text-white' }}">My Posts</a>
+            <a href="/dashboard/posts" class="{{ Request::is('posts') ? 'text-white' : 'text-gray-300 hover:text-white' }}">My Posts</a>
             <a href="/profile" class="{{ Request::is('about') ? 'text-white' : 'text-gray-300 hover:text-white' }}">Profile</a>
             @endauth
             @auth
@@ -37,7 +37,7 @@
     <div id="nav-menu" class="md:hidden mt-2 hidden">
         <a href="/" class="{{ Request::is('/') ? 'text-white' : 'text-gray-300 hover:text-white' }}">Home</a>
         @auth
-            <a href="/posts" class="{{ Request::is('posts') ? 'text-white' : 'text-gray-300 hover:text-white' }}">My Posts</a>
+            <a href="/dashboard/posts" class="{{ Request::is('posts') ? 'text-white' : 'text-gray-300 hover:text-white' }}">My Posts</a>
             <a href="/profile" class="{{ Request::is('about') ? 'text-white' : 'text-gray-300 hover:text-white' }}">Profile</a>
         @endauth
         @auth

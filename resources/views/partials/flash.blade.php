@@ -1,4 +1,4 @@
-<div id="flash-message" class="relative px-4 py-3 rounded {{ $type === 'error' ? 'bg-red-100 border border-red-400 text-red-700' : 'bg-green-100 border border-green-400 text-green-700' }}" role="alert">
+<div id="flash-message" class="relative px-4 py-3 rounded mb-2 {{ $type === 'error' ? 'bg-red-100 border border-red-400 text-red-700' : 'bg-green-100 border border-green-400 text-green-700' }}" role="alert">
     <strong class="font-bold">{{ ucfirst($type) }}!</strong>
     <span class="block sm:inline">{{ $message }}</span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="dismissFlashMessage()">
